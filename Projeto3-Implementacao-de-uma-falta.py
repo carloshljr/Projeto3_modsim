@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 """
 Created on Thu Jun  2 09:16:04 2016
@@ -209,7 +210,7 @@ for i in range(len(Sx)):
 plt.plot(y0[:,0], y0[:,2],'o',color = 'black')
 plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1))
 plt.title('Visão do Roberto Carlos')
-plt.xlabel('Espaço y[m]')
+plt.xlabel('Espaço x[m]')
 plt.ylabel('Espaço z[m]')
 plt.axis([0,0.7,0,2])
 
@@ -238,7 +239,7 @@ plt.plot(y0[:,1], y0[:,2],'o',color = 'black',label = 'Bola implementação')
 #plt.plot(xr,zr,'o',color = 'blue',label = 'Bola real')
 plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1))
 plt.title('Visão do banco de reservas')
-plt.xlabel('Espaço x[m]')
+plt.xlabel('Espaço y[m]')
 plt.ylabel('Espaço z[m]')
 #plt.axis([-0.15,25,-0.15,2.5])
 
@@ -417,5 +418,4 @@ plt.axis([0,25,22.6,23.2])
 
 plt.grid()
 plt.show()
-    
     
