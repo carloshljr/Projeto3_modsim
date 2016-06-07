@@ -194,18 +194,10 @@ Sx = y0[:,0]
 velz = y0[:,5]
 vely = y0[:,4]
 velx = y0[:,3]
-print(len(yr),len(xr),len(td))
 
 for i in range(len(Sx)):
     velocidade.append(math.sqrt(y0[:,3][i]**2 + y0[:,4][i]**2 +y0[:,5][i]**2))
-    Sy.append(- y0[:,1][i])
-#print(Sy)
-#print("A altura maxima da bola é {0}.".format(max(Sz)))
-#
-#for i in range(len(Sz)):
-#    print("Na posição {0} em z, o tempo é {1}.".format(Sz[i],T[i]))    
-#    if Sz[i] <= 0:
-#        print("Deu errado irmão")
+
   
 #======================Gráfico da posicao de y por z==============================================    
 
@@ -362,7 +354,6 @@ ang = rad_gra(teta)
 tetas.append(ang)
 #tetas.append(teta)
 for i in range(1,10):
-    print(teta)
     teta -= math.pi * 0.5/180
     
     v0 = 31.48
@@ -374,7 +365,6 @@ for i in range(1,10):
     z = 0
     V = [vx,vy,vz]
     ang = rad_gra(teta)
-    print(ang)
     tetas.append(ang)
     
     #Implementação
@@ -397,9 +387,10 @@ for i in range(1,10):
     merito.append(max(Sz))
     merito2.append(max(Sy))
 
-#for i in range(len(merito)):
-#    if merito[i] >= 1.8:
-#        print(tetas[i])
+for i in range(len(merito)):
+    if merito[i] >= 1.8:
+        print(tetas[i])
+        
         
 
 plt.plot(tetas,merito,'o',label = '',c = 'r')
