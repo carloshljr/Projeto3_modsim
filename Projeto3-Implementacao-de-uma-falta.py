@@ -16,6 +16,21 @@ from numpy import linalg
 from numpy import multiply 
 from numpy import cross
 import math
+import matplotlib.font_manager as font_manager
+
+title_font = {'fontname':'Helvetica', 'size':'16', 'color':'black', 'weight':'normal',
+              'verticalalignment':'bottom'} # Bottom vertical alignment for more space
+axis_font = {'fontname':'Helvetica', 'size':'14'}
+
+
+ax = plt.subplot() # Defines ax variable by creating an empty plot
+
+
+
+# Set the tick labels font
+for label in (ax.get_xticklabels() + ax.get_yticklabels()):
+    label.set_fontname('Arial')
+    label.set_fontsize(13)
 
 #constantes
 #p = 0.25
@@ -202,10 +217,10 @@ for i in range(len(Sx)):
 #======================Gráfico da posicao de y por z==============================================    
 
 plt.plot(y0[:,0], y0[:,2],'o',color = 'black')
-plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1))
-plt.title('Visão do Roberto Carlos')
-plt.xlabel('Espaço x[m]')
-plt.ylabel('Espaço z[m]')
+plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1),fontsize = 14)
+plt.title('Visão do Roberto Carlos',**title_font)
+plt.xlabel('Espaço x[m]',**axis_font)
+plt.ylabel('Espaço z[m]',**axis_font)
 plt.axis([0,0.7,0,2])
 
 
@@ -217,13 +232,16 @@ plt.show()
 #======================Gráfico da posicao de y por x==============================================    
 #for i in range(len(Sx)):
 #    print("({0},{1})".format(Sx[i],Sy[i]))
+# Set the font dictionaries (for plot title and axis titles)
 
-plt.plot(y0[:,1],y0[:,0],'-',color = 'black')
-plt.plot(yr,xr,'o',color = 'blue',label = 'Bola real')
-plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1))
-plt.title('Visão de cima do campo')
-plt.xlabel('Espaço y[m]')
-plt.ylabel('Espaço x[m]')
+
+
+plt.plot(y0[:,1],y0[:,0],'o',color = 'black')
+plt.plot(yr,xr,'o',color = 'y',label = 'Bola real')
+plt.legend(loc='upper right', bbox_to_anchor=(1.39, 1.1),fontsize = 14)
+plt.title('Visão de cima do campo',**title_font)
+plt.xlabel('Espaço y[m]',**axis_font)
+plt.ylabel('Espaço x[m]',**axis_font)
 
 plt.grid()
 plt.show()
@@ -231,10 +249,10 @@ plt.show()
 #======================Gráfico da posicao z por x==============================================
 plt.plot(y0[:,1], y0[:,2],'o',color = 'black',label = 'Bola implementação')
 #plt.plot(xr,zr,'o',color = 'blue',label = 'Bola real')
-plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1))
-plt.title('Visão do banco de reservas')
-plt.xlabel('Espaço y[m]')
-plt.ylabel('Espaço z[m]')
+plt.legend(loc='upper right', bbox_to_anchor=(1.45, 1.1),fontsize = 14)
+plt.title('Visão do banco de reservas',**title_font)
+plt.xlabel('Espaço y[m]',**axis_font)
+plt.ylabel('Espaço z[m]',**axis_font)
 #plt.axis([-0.15,25,-0.15,2.5])
 
 plt.grid()
@@ -247,9 +265,9 @@ mpl.rcParams['legend.fontsize'] = 10
 fig = plt.figure()
 ax = fig.gca(projection='3d')
 ax.plot(y0[:,0], y0[:,1], y0[:,2], label='Movimento da bola',marker = 'o',color = 'black')
-ax.set_xlabel('Posição em x')
-ax.set_ylabel('Posição em y')
-ax.set_zlabel('Posicção em z')
+ax.set_xlabel('Posição em x',**axis_font)
+ax.set_ylabel('Posição em y',**axis_font)
+ax.set_zlabel('Posicção em z',**axis_font)
 ax.legend()
 
 plt.show()
@@ -257,10 +275,10 @@ plt.show()
 #======================Gráfico da posicao de y pelo tempo==============================================
 plt.plot(T,y0[:,1],'-',label = 'Posição em y',c='y')
 plt.plot(td,yr,'o',color = 'blue',label = 'Posição y da bola real')
-plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1))
-plt.title('Gráficos das posições em y')
-plt.xlabel('Tempo[s]')
-plt.ylabel('Espaço[m]')
+plt.legend(loc='upper right', bbox_to_anchor=(1.55, 1.1),fontsize = 14)
+plt.title('Gráficos das posições em y',**title_font)
+plt.xlabel('Tempo[s]',**axis_font)
+plt.ylabel('Espaço[m]',**axis_font)
 
 plt.grid()
 plt.show()
@@ -269,10 +287,10 @@ plt.show()
 #======================Gráfico da posicao de x  pelo tempo==============================================
 plt.plot(T,y0[:,0],'-',label = 'Posição em x',c='red')
 plt.plot(td,xr,'o',color = 'blue',label = 'Posição x da bola real')
-plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1))
-plt.title('Gráficos das posições em x')
-plt.xlabel('Tempo[s]')
-plt.ylabel('Espaço[m]')
+plt.legend(loc='upper right', bbox_to_anchor=(1.55, 1.1),fontsize = 14)
+plt.title('Gráficos das posições em x',**title_font)
+plt.xlabel('Tempo[s]',**axis_font)
+plt.ylabel('Espaço[m]',**axis_font)
 
 plt.grid()
 plt.show()
@@ -280,11 +298,11 @@ plt.show()
 #======================Gráfico da posicao de z  pelo tempo==============================================
 plt.plot(T,y0[:,2],'-',label = 'Posição em z',c='green')
 #plt.plot(td,zr,'o',color = 'blue',label = 'Posição z da bola real')
-plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1))
-plt.title('Gráficos das posições em z')
+plt.legend(loc='upper right', bbox_to_anchor=(1.45, 1.1),fontsize = 14)
+plt.title('Gráficos das posições em z',**title_font)
 plt.axis([0,1.4,0,2])
-plt.xlabel('Tempo[s]')
-plt.ylabel('Espaço[m]')
+plt.xlabel('Tempo[s]',**axis_font)
+plt.ylabel('Espaço[m]',**axis_font)
 
 plt.grid()
 plt.show()
@@ -292,10 +310,10 @@ plt.show()
 
 #======================Gráfico da posicao de v pelo tempo==============================================
 plt.plot(T,velocidade,'-',label = 'Velocidade',c='black')
-plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1))
-plt.title('Gráficos das velocidades')
-plt.xlabel('Tempo[s]')
-plt.ylabel('Velocidade[m/s]')
+plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1),fontsize = 14)
+plt.title('Gráficos das velocidades',**title_font)
+plt.xlabel('Tempo[s]',**axis_font)
+plt.ylabel('Velocidade[m/s]',**axis_font)
 
 
 plt.grid()
@@ -303,10 +321,10 @@ plt.show()
 
 #======================Gráfico da posicao de vx pelo tempo==============================================
 plt.plot(T,y0[:,3],'-',label = 'Velocidade em x',c='r')
-plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1))
-plt.title('Gráficos das velocidades em x')
-plt.xlabel('Tempo[s]')
-plt.ylabel('Velocidade[m/s]')
+plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1),fontsize = 14)
+plt.title('Gráficos das velocidades em x',**title_font)
+plt.xlabel('Tempo[s]',**axis_font)
+plt.ylabel('Velocidade[m/s]',**axis_font)
 
 
 plt.grid()
@@ -314,10 +332,10 @@ plt.show()
 
 #======================Gráfico da posicao de vz pelo tempo==============================================
 plt.plot(T,y0[:,5],'-',label = 'Velocidade em z',c='green')
-plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1))
-plt.title('Gráficos das velocidades em z')
-plt.xlabel('Tempo[s]')
-plt.ylabel('Velocidade[m/s]')
+plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1),fontsize = 14)
+plt.title('Gráficos das velocidades em z',**title_font)
+plt.xlabel('Tempo[s]',**axis_font)
+plt.ylabel('Velocidade[m/s]',**axis_font)
 
 
 plt.grid()
@@ -327,10 +345,10 @@ plt.show()
 #======================Gráfico da posicao de v e vy pelo tempo==============================================
 #plt.plot(T,velocidade,'-',label = 'Velocidade')
 plt.plot(T,y0[:,4],'-',label = 'Velocidade em y',c='y')
-plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1))
-plt.title('Gráficos das velocidades em y')
-plt.xlabel('Tempo[s]')
-plt.ylabel('Velocidade[m/s]')
+plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1),fontsize = 14)
+plt.title('Gráficos das velocidades em y',**title_font)
+plt.xlabel('Tempo[s]',**axis_font)
+plt.ylabel('Velocidade[m/s]',**axis_font)
 
 plt.grid()
 plt.show()
@@ -388,25 +406,28 @@ for i in range(1,10):
     merito2.append(max(Sy))
 
 for i in range(len(merito)):
+    if tetas[i]<=13.5:
+        print(merito[i])
     if merito[i] >= 1.8:
         print(tetas[i])
         
         
 
 plt.plot(tetas,merito,'o',label = '',c = 'r')
-plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1))
-plt.title('Gráficos da altura máxima da bola')
-plt.xlabel('ß [º]')
-plt.ylabel('Espaço[m]')
+plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1),fontsize = 14)
+plt.title('Gráficos da altura máxima da bola',**title_font)
+plt.xlabel('ângulo [graus]',**axis_font)
+plt.ylabel('Altura máxima[m]',**axis_font)
+plt.axis([10,14.5,0,2])
 
 plt.grid()
 plt.show()
     
 plt.plot(tetas,merito2,'o',label = '',c = 'g')
-plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1))
-plt.title('Gráficos da distância máxima da bola')
-plt.xlabel('ß [º]')
-plt.ylabel('Espaço[m]')
+plt.legend(loc='upper right', bbox_to_anchor=(1.13, 1.1),fontsize = 14)
+plt.title('Gráficos da distância máxima da bola',**title_font)
+plt.xlabel('ângulo [º]',**axis_font)
+plt.ylabel('Espaço[m]',**axis_font)
 plt.axis([0,25,22.6,23.2])
 
 plt.grid()
